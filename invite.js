@@ -7,6 +7,16 @@ const audio = document.getElementById("weddingAudio");
 
 openButton.addEventListener("click", () => {
   openButton.disabled = true;
+
+  audio.play()
+    .then(() => {
+      musicState.textContent = "ON";
+    })
+    .catch(() => {
+      musicState.textContent = "OFF";
+      showToast("Tap MUSIC to start playback.");
+    });
+
   opening.classList.add("is-opening");
   window.setTimeout(() => opening.classList.add("is-revealing"), 1100);
   window.setTimeout(() => {
